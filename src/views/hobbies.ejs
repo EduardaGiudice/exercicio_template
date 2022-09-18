@@ -1,0 +1,22 @@
+<%-include('base_header') -%>
+
+
+
+
+<body>
+<div class="corpohobbies">
+    <ul>
+        <% for(var i=0; i< lista_hobbies.length; ++i) { %>        
+            <li> 
+                <h3><span class="descritor">Hobbie:</span> <%=lista_hobbies[i].nomehobbie %></h3><br/>
+                <p><span class="descritor">Sobre:</span> <%=lista_hobbies[i].descricaohobbie %></p><br/>
+            </li> 
+        <% } %>
+        </ul>
+
+</div>
+
+
+
+
+<%- include('base_footer') -%>

@@ -6,10 +6,28 @@ class Projeto{
         this.fim = fim;
 
     }
+
+}
+
+class Pessoa{
+    constructor(nome, idade){
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+}
+
+class Hobbie{
+    constructor(nomehobbie, descricaohobbie){
+        this.nomehobbie = nomehobbie;
+        this.descricaohobbie = descricaohobbie;
+    }
 }
 
 module.exports = {
-    Projeto: Projeto
+    Projeto: Projeto,
+    Pessoa: Pessoa,
+    Hobbie: Hobbie
 }  
 
 

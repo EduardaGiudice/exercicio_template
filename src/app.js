@@ -12,6 +12,8 @@ const port = 5000;
 /* importando o modelo */
 const modelo = require('./models/modelos');
 var Projeto = modelo.Projeto; //Vinculação de tipo
+var Pessoa = modelo.Pessoa;
+var Hobbie = modelo.Hobbie;
 
 
 /* Configurando a template engine. */
@@ -23,6 +25,8 @@ app.use(express.static('public'));
 
 app.get('/', listProjectHandler);
 app.get('/sobre_mim', euHandler);
+app.get('/hobbies', listHobbies);
+
 app.listen(port, listenHandler);
 
 function listProjectHandler(req, res){
@@ -38,11 +42,24 @@ function listProjectHandler(req, res){
 }
 
 function euHandler(req, res){
-    const nome= 'Eduarda Rosa Giudice Mota';
-    const datanascimento= '12/11/2000';
+ //   const nome= 'Eduarda Rosa Giudice Mota';
+ //   const datanascimento= '12/11/2000';
+ let pessoa= new Pessoa("Eduarda", 99);
     console.log('teste');
-    res.render('sobre_mim.ejs',{nome,datanascimento} );
+    res.render('sobre_mim.ejs',{p: pessoa} );
 }
+
+function listHobbies(req, res){
+    let hobbie_1= new Hobbie("Dormir", "Durmo 10 horas por dia!");
+    let hobbie_2= new Hobbie("Andar de Patins", "Ando de patins 1 vez na semana");
+    let hobbie_3= new Hobbie("Viajar", "Viajo uma vez por ano");
+    let hobbies = [];
+    hobbies.push(hobbie_1);
+    hobbies.push(hobbie_2);
+    hobbies.push(hobbie_3);
+       console.log('teste');
+    res.render('hobbies.ejs',{lista_hobbies: hobbies});
+   }
 
 
 
