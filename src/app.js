@@ -44,7 +44,7 @@ function listProjectHandler(req, res){
 function euHandler(req, res){
  //   const nome= 'Eduarda Rosa Giudice Mota';
  //   const datanascimento= '12/11/2000';
- let pessoa= new Pessoa("Eduarda", 99);
+ let pessoa= new Pessoa("minhafoto.jpeg","Eduarda", 99);
     console.log('teste');
     res.render('sobre_mim.ejs',{p: pessoa} );
 }

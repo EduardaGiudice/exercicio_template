@@ -10,7 +10,8 @@ class Projeto{
 }
 
 class Pessoa{
-    constructor(nome, idade){
+    constructor(imagem, nome, idade){
+        this.imagem = imagem;
         this.nome = nome;
         this.idade = idade;
     }

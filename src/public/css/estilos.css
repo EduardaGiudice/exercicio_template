@@ -71,17 +71,22 @@ header{
 .sobremim{
     margin-top: 30px;
     margin-bottom: 500px;
+    text-align: center;
 }
 
 .sobremim h1{
     color:#f05eb5;
-    text-align: center;
 }
 
 
 .sobremim h2{
     color:#f05eb5; 
-    text-align: center; 
+}
+
+.sobremim img{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
 }
 
 footer{
