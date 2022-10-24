@@ -74,6 +74,7 @@ header{
     text-align: center;
 }
 
+
 .sobremim h1{
     color:#f05eb5;
 }
@@ -83,10 +84,50 @@ header{
     color:#f05eb5; 
 }
 
-.sobremim img{
+
+.minhafoto{
+    margin-top: 100px;
+    width: 40%;
+    text-align: center;
+}
+
+.tela-principal{
+    color:#f05eb5;
+}
+
+.tela-principal img{
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    height: 350px;
+    width: 350px;
+}
+
+.tela-principal div{
+    height: 450px;
+    display: inline-block;
+}
+
+.tela-principal h1{
+    font-size: 58px;
+    text-align: center;
+}
+
+.tela-principal h2{
+    font-size: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.tela-principal p{
+    font-size: 14px;
+    margin-top: 30px;
+    line-height: 24px;
+}
+.nome-titulo {
+    vertical-align: top;
+    height: 60%;
+    width: 50%;
+    margin-top: 100px;
+    text-transform: uppercase;
 }
 
 footer{

@@ -6,6 +6,7 @@ Autor: Fabrício G. M. de Carvalho, Ph.D
 
 /* importando o express */
 const express = require('express')
+const request = require('request');
 const app = express();
 const port = 5000;
 
@@ -29,22 +30,59 @@ app.get('/hobbies', listHobbies);
 
 app.listen(port, listenHandler);
 
-function listProjectHandler(req, res){
+//function listProjectHandler(req, res){
     /* Os dados a seguir, em uma aplicação real, deveriam vir de um BD */
-    let projeto_1 = new Projeto("software","HTML, CSS, C#", 2021, 2021);
-    let projeto_2 = new Projeto("software","Java",2022,2022);
-    let projeto_3 = new Projeto("software","C", 2022, 2022);
-    let projetos = [];
-    projetos.push(projeto_1);
-    projetos.push(projeto_2);
-    projetos.push(projeto_3);
-    res.render('listar_projetos.ejs',{lista_projetos: projetos});
-}
+ //   let projeto_1 = new Projeto("software","HTML, CSS, C#", 2021, 2021);
+ //   let projeto_2 = new Projeto("software","Java",2022,2022);
+ //   let projeto_3 = new Projeto("software","C", 2022, 2022);
+ //   let projetos = [];
+ //   projetos.push(projeto_1);
+ //   projetos.push(projeto_2);
+//    projetos.push(projeto_3);
+  //  res.render('listar_projetos.ejs',{lista_projetos: projetos});
+//}
 
+function listProjectHandler(req, resp){
+    /* aqui os dados são solicitados a partir do serviço */
+    console.log("Efetuando a request ao serviço.");
+    let projetos = [];
+    request('http://localhost:5001/list', 
+            { json: true }, (err, res, body) => {
+                if (err) { 
+                    return console.log(err); 
+                } else {
+                    /* build project list: */
+                    res.body.forEach((item)=>{
+                        let projeto = new Projeto(item.id, item.titulo, item.tipo, 
+                                            item.tecnologia, item.inicio, item.fim);
+                        projetos.push(projeto);
+                    }); 
+                    resp.render('listar_projetos',{lista_projetos: projetos});                    
+                }               
+            });    
+}
+//function euHandler(req, resp){
+    /* aqui os dados são solicitados a partir do serviço */
+   // console.log("Efetuando a request ao serviço.");
+  //  let pessoa = [];
+  //  request('http://localhost:5001/list', 
+   //         { json: true }, (err, res, body) => {
+   //             if (err) { 
+   //                 return console.log(err); 
+   //             } else {
+   //                 /* build project list: */
+    //                res.body.forEach((item)=>{
+   //                     let pessoa= new Pessoa( item.nome, item.idade, item.sobremim);
+   //                     projetos.push(pessoa);
+   //                 }); 
+   //                 resp.render('listar_projetos',{lista_projetos: projetos});                    
+   //             }               
+   //         });    
+//}
 function euHandler(req, res){
  //   const nome= 'Eduarda Rosa Giudice Mota';
  //   const datanascimento= '12/11/2000';
- let pessoa= new Pessoa("minhafoto.jpeg","Eduarda", 99);
+ let pessoa= new Pessoa("minhafoto.jpeg","Eduarda Giudice", "21 anos");
     console.log('teste');
     res.render('sobre_mim.ejs',{p: pessoa} );
 }
